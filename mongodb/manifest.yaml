@@ -22,10 +22,10 @@ spec:
         environment: dev
         tier: database 
         component: mongodb
-  spec:
-    containers:
-    - name: mongodb
-      image: ramslella/mongodb:v1    
+    spec:
+     containers:
+     - name: mongodb
+       image: ramslella/mongodb:v1    
 
 
 ---
