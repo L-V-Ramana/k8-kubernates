@@ -47,6 +47,6 @@ spec:
     tier: database 
     component: mongodb
   ports:
-  - protocol: TPC
+  - protocol: TCP
     port: 27017 #which port this service should accept requests
     targetPort: 27017 #on which port should the service connect to the mongo db 
