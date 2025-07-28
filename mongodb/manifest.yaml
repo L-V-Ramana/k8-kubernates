@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    project: roboshop
+    environment: dev
+    tier: database 
+spec:
+  replicas: 1
+  selectors:
+    matchLabels:
+      project: roboshop
+      environment: dev
+      tier: database 
+      component: mongodb
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        environment: dev
+        tier: database 
+        component: mongodb
+  spec:
+    containers:
+    - name: mongodb
+      image: ramslella/mongodb:v1    
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    project: roboshop
+    environment: dev
+    component: mongodb
+    tier: database
+spec:
+  selector:
+    project: roboshop
+    environment: dev
+    tier: database 
+    component: mongodb
+  ports:
+  - protocol: TPS
+    port: 80 #which port this service should accept requests
+    targetPort: 27017 #on which port should the service connect to the mongo db 
