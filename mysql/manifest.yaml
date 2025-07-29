@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels: 
+    project: roboshop
+    environment: dev
+    tire: database
+    component: mysql
+spec:
+  data:
+    MYSQL_ROOT_PASSWORD: "Um9ib3Nob3BAMQ=="
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mysql
+  namespace: roboshop
+  labels:
+    project: roboshop
+    environment: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      environment: dev
+      tire: database
+      component: mysql
+  template:
+     labels:
+      project: roboshop
+      environment: dev
+      tire: database
+      component: mysql
+  spec:
+    containers:
+    - name: mysql
+      image: ramslella/mysql
+      envFrom:
+        -secRrf:
+          name:mysql
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: roboshop
+  metadata: 
+    labels:
+      project: roboshop
+      environment: dev
+      tire: database
+      component: mysql 
+spec:
+  selector:
+    matchLabels:
+      project: roboshop
+      environment: dev
+      component: mongodb
+      tier: database
+  ports:
+  - protocol: TPC
+    port: 3306
+    targetPort: 3306

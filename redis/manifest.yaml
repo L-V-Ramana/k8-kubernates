@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: roboshop
+  labels:
+    project: roboshop
+    environment: dev
+    tire: database
+    component: redis
+spec:
+  replica: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      environment: dev
+      tire: database
+      component: redis
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        environment: dev
+        tire: database
+        component: redis
+  spec:
+   containers:
+   - name: redis
+     image: ramslella/redis
+    
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: roboshop
+  labels:
+    project: roboshop
+    environment: dev
+    component: redis
+    tire: database
+spec:
+  replicas: 1
+  selector:
+    project: roboshop
+    environment: dev
+    component: redis
+    tire: database
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379

@@ -1,7 +1,44 @@
 apiVersion: v1
+kind: configmap
+metadata:
+  name: shipping
+  namespace: roboshop
+  labels:
+    project: roboshop
+    environment: dev
+    tier: app
+    component: shipping
+spec:
+  data:
+    CART_ENDPOINT: "cart:8080"
+    DB_HOST: "mysql"
+---
+apiVersion: v1
 kind: Namespace
 metadata:
   name: roboshop
   labels:
     project: roboshop
     environment: dev
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      environment: dev
+      tire: app
+      component: shipping
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        environment: dev
+        tire: app
+        component: shipping
+  spec:
+  - containers:
+    name: shipping
+    image: ramslella/shipping
+    envFrom:
+    - configMapRef:
+       name: shipping
