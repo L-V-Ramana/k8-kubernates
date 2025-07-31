@@ -35,14 +35,14 @@ spec:
         environment: dev
         tire: app
         componet: user
-  spec:
-    containers: 
-    - name: user
-      image: ramslella/user
+    spec:
+      containers: 
+      - name: user
+        image: ramslella/user
 
-    envFrom:
-    - configMapRef:
-        name: user
+      envFrom:
+      - configMapRef:
+          name: user
 
 
 ---

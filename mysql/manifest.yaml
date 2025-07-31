@@ -31,18 +31,18 @@ spec:
       tire: database
       component: mysql
   template:
-     labels:
+    labels:
       project: roboshop
       environment: dev
       tire: database
       component: mysql
-  spec:
-    containers:
-    - name: mysql
-      image: ramslella/mysql
-      envFrom:
-        -secRrf:
-          name:mysql
+    spec:
+      containers:
+      - name: mysql
+        image: ramslella/mysql
+        envFrom:
+        - secRrf:
+            name:mysql
 
 ---
 apiVersion: v1

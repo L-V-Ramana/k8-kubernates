@@ -62,11 +62,11 @@ spec:
       environment: dev
       component: cart
       tire: app
-  spec:
-    containers:
-    - name: cart
-      image: ramslella/cart
-      envFrom:
-      - configMapRef:
-        name: cart
+    spec:
+      containers:
+      - name: cart
+        image: ramslella/cart
+        envFrom:
+        - configMapRef:
+          name: cart
 

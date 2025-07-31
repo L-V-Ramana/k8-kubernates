@@ -39,13 +39,13 @@ spec:
         environment: dev
         tire: app
         component: shipping
-  spec:
-    containers:
-    - name: shippping
-      image: ramslella/shipping 
-      envFrom:
-      - configMapRef:
-         name: shipping 
+    spec:
+      containers:
+      - name: shippping
+        image: ramslella/shipping 
+        envFrom:
+        - configMapRef:
+          name: shipping 
 
 ---
 

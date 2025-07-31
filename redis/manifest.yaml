@@ -23,10 +23,10 @@ spec:
         environment: dev
         tire: database
         component: redis
-  spec:
-   containers:
-   - name: redis
-     image: ramslella/redis
+    spec:
+    containers:
+    - name: redis
+      image: ramslella/redis
     
 --- 
 

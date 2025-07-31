@@ -56,13 +56,13 @@ spec:
         environment: dev
         tire: app
         component: catalogue
-  spec:
-    containers:
-    - name: catalogue
-      images: ramslella/catalogue
-      envFrom:
-      - configMapRef:
-        name: catalogue
+    spec:
+      containers:
+      - name: catalogue
+        images: ramslella/catalogue
+        envFrom:
+        - configMapRef:
+          name: catalogue
 
 ---
 apiVersion: v1

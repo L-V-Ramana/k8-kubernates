@@ -34,19 +34,19 @@ spec:
       tire: app
       component: shipping
   template:
-      metadata:
-        labels:
-          project: roboshop
-          environment: dev
-          tire: app
-          component: shipping
-  spec:
-    containers:
-    - name: rabbitmq
-      image: rabbitmq
-      envFrom:
-      - secretRef:
-         name: rabbitmq 
+    metadata:
+      labels:
+        project: roboshop
+        environment: dev
+        tire: app
+        component: shipping
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq
+        envFrom:
+        - secretRef:
+          name: rabbitmq 
 
 ---
 
