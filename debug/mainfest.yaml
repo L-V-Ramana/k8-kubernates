@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debug
+  namespace: roboshop
+  lables:
+    project: roboshop
+    environment: dev
+    kind: 
+    component: debug
+spec:
+  containers:
+  - name: debug
